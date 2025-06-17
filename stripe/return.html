@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stripe Onboarding Complete</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .success {
+      color: green;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="success">You're all set!</h1>
+  <p>Your Stripe account has been successfully linked.</p>
+  <script>
+    // Notify opener (if opened in popup)
+    if (window.opener) {
+      window.opener.postMessage({ stripeSuccess: true }, '*');
+      window.close();
+    } else {
+      // Fallback: redirect to home
+      window.location.href = '/?stripe=success';
+    }
+  </script>
+</body>
+</html>

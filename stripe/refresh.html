@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stripe Onboarding Incomplete</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .error {
+      color: red;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="error">Onboarding Not Completed</h1>
+  <p>You exited the Stripe onboarding process or encountered an error.</p>
+  <script>
+    if (window.opener) {
+      window.opener.postMessage({ stripeSuccess: false }, '*');
+      window.close();
+    } else {
+      window.location.href = '/?stripe=failed';
+    }
+  </script>
+</body>
+</html>
